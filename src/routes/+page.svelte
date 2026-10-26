@@ -32,8 +32,7 @@
 
             <div class="rounded-3xl bg-yellow-200 p-5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 <Quote author="Oscar Wilde">
-                    Be yourself; everyone else is already taken.
-                </Quote>
+                    Be yourself.
             </div>
 
             <div class="rounded-3xl bg-green-200 p-5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
