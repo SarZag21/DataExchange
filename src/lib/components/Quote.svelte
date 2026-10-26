@@ -1,3 +1,4 @@
+
 <script>
     let {children, author="Not known"} = $props();
 
@@ -5,7 +6,7 @@
     let quoteElement;
 
     // Copy the quote text
-   async function copyQuote() {
+    async function copyQuote() {
         //Copy
         await navigator.clipboard.writeText(quoteElement.textContent.trim());
 
@@ -20,36 +21,49 @@
             });
         }
     }
+
     //Share
     async function share() {
-                await navigator.share({
-                    title: "Please read my quote",
-                    text: quoteElement.innerText.trim(),
-                });
+        await navigator.share({
+            title: "Please read my quote",
+            text: quoteElement.innerText.trim(),
+        });
     }
 </script>
 
-<div>
+<div class="flex h-full flex-col">
 
-    <header>
+    <!-- Author -->
+    <header class="mb-4 flex items-center gap-2 text-lg font-bold text-gray-800">
         {author} says:
     </header>
 
+    <!-- Quote -->
+    <blockquote
+        class="mb-6 flex-1 rounded-2xl border-l-4 border-purple-500 bg-white/60 p-5 text-lg italic leading-relaxed text-gray-800 shadow-sm"
+        bind:this={quoteElement}
+    >
+        {@render children?.()}
+    </blockquote>
 
-<blockquote class="border border-black p-4" bind:this={quoteElement}>
- 
-    {@render children?.()}
+    <!-- Buttons -->
+    <div class="flex gap-3">
 
+        <!-- Copy button -->
+        <button
+            onclick={copyQuote}
+            class="flex-1 cursor-pointer rounded-xl bg-white px-4 py-3 font-semibold text-purple-700 shadow-md transition-all duration-300 hover:scale-105 hover:bg-purple-100"
+        >
+             Copy
+        </button>
 
-</blockquote>
+        <!-- Share button -->
+        <button
+               class="flex-1 cursor-pointer rounded-xl bg-purple-600 px-4 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:bg-purple-700"
+        >
+             Share
+        </button>
 
-<!-- Button to copy the quote text -->
-<button onclick={copyQuote} class="border border-black p-2">
-    Copy
-</button>
-
-<button onclick={share} class="border border-black p-2">
-Share 
-</button>
+    </div>
 
 </div>
