@@ -10,7 +10,7 @@
     const targetLon = 19.517268301553923;
 
     // Maximum distance: 15 meters
-    const maxDistance = 500;
+    const maxDistance = 15;
 
     // Controls visibility of the sixth quote
     let showSixthQuote = $state(false);
