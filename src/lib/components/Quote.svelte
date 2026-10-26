@@ -22,12 +22,21 @@
         }
     }
 
-    //Share
+    // Share the quote using the browser's native share dialog when available.
     async function share() {
-        await navigator.share({
-            title: "Please read my quote",
-            text: quoteElement.innerText.trim(),
-        });
+        const text = quoteElement.innerText.trim();
+
+        if (navigator.share) {
+            await navigator.share({
+                title: "Please read my quote",
+                text,
+            });
+            return;
+        }
+
+        // Copy the quote as a fallback in browsers without native sharing.
+        await navigator.clipboard.writeText(text);
+        window.alert("Sharing is not supported in this browser. The quote was copied instead.");
     }
 </script>
 
@@ -59,6 +68,7 @@
 
         <!-- Share button -->
         <button
+               onclick={share}
                class="flex-1 cursor-pointer rounded-xl bg-purple-600 px-4 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:bg-purple-700"
         >
              Share

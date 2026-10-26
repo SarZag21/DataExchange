@@ -38,7 +38,7 @@
 
             <div class="rounded-3xl bg-green-200 p-5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 <Quote author="Mahatma Gandhi">
-                    Be the change you wish to see in the world.
+                Don#t worry, be happy
                 </Quote>
             </div>
 
